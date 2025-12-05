@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exam Score Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Student Exam Score Predictor</h1>
+
+    <form action="/predict" method="POST">
+
+
+        <select name="Gender" required>
+            <option value="" disabled selected>Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+
+        <input type="number" step="any" name="HoursStudied" placeholder="Hours Studied per Week" required>
+
+        <select name="Tutoring" required>
+            <option value="" disabled selected>Has Tutoring?</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+        </select>
+
+        <select name="Region" required>
+            <option value="" disabled selected>Select Region</option>
+            <option value="Urban">Urban</option>
+            <option value="Rural">Rural</option>
+        </select>
+
+
+        <input type="number" step="any" name="Attendance" placeholder="Attendance (%)" required>
+
+        <select name="Parent_Education" required>
+            <option value="" disabled selected>Parent Education Level</option>
+            <option value="None">None</option>
+            <option value="Primary">Primary</option>
+            <option value="Secondary">Secondary</option>
+            <option value="Tertiary">Tertiary</option>
+        </select>
+
+        <button type="submit">Predict Score</button>
+    </form>
+
+    {% if prediction %}
+        <h2 class="result">Predicted Exam Score: {{ prediction }}</h2>
+    {% endif %}
+</div>
+
+</body>
+</html>
